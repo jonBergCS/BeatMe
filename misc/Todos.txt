@@ -2,7 +2,6 @@ Bar:
 - Create screen ui
 
 Jon:
-- finding samples
 - finding a way to time the samples.
 
 

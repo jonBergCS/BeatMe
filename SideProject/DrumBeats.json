@@ -1,47 +1,49 @@
 [
     {
         "name":"Beat1",
-        "snare": {
-            "startingMeasure": "4n",
-            "repeatMeasure": "2n"
-        },
+        "snare":{
+			"Pattern":["0m","4n","4n","4n"],
+			"LoopEnd":"1m"
+		},
         "kick": {
-            "startingMeasure": "0m",
-            "repeatMeasure": "4n"
+            "Pattern":["0m","2n"],
+			"LoopEnd":"1m"
         },
         "hihat": {
-            "startingMeasure": "0m",
-            "repeatMeasure": "8n"
+            "Pattern":["8n","8n","8n","8n",
+						"8n","8n","8n","8n"],
+			"LoopEnd":"1m"
         }
     },
     {
         "name":"Beat2",
-        "snare": {
-            "startingMeasure": "4n",
-            "repeatMeasure": "2n"
-        },
+          "snare":{
+			"Pattern":["2n","2n"],
+			"LoopEnd":"1m"
+		},
         "kick": {
-            "startingMeasure": "0m",
-            "repeatMeasure": "4n"
+            "Pattern":["0m","2n"],
+			"LoopEnd":"1m"
         },
         "hihat": {
-            "startingMeasure": "0n",
-            "repeatMeasure": "8n"
+            "Pattern":["8n","8n","8n","8n",
+						"8n","8n","8n","8n"],
+			"LoopEnd":"1m"
         }
     },
     {
         "name":"Beat3",
-        "snare": {
-            "startingMeasure": "4n",
-            "repeatMeasure": "2n"
-        },
+          "snare":{
+			"Pattern":["2n","2n"],
+			"LoopEnd":"1m"
+		},
         "kick": {
-            "startingMeasure": "0m",
-            "repeatMeasure": "4n"
+            "Pattern":["0m","2n"],
+			"LoopEnd":"1m"
         },
         "hihat": {
-            "startingMeasure": "0n",
-            "repeatMeasure": "8n"
+            "Pattern":["8n"],
+			"LoopEnd":"1m"
         }
     }
 ]

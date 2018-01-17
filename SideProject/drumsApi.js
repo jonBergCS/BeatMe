@@ -41,16 +41,16 @@ var init = function(){
     window.playing = false;
 };
 
-var setBeat = function (beatObject) {
+var setBeat = function (beatObject, ) {
   
   kickLoop = new Tone.Part(function(time){
   	players.get('kick').start(time,0.001);
   	},beatObject.kick.Pattern.map(function(e,i,array){
 	  return array.slice(0,i+1).join(" + ");
   }));
-  kickLoop.loopEnd = beatObject.kick.LoopEnd;
+  kickLoop.loopEnd = beatObject.PlayMeasures + "m+" + 
+                     beatObject.SilenceMeasures + "m";
   kickLoop.loop=true;
-   
 
   snareLoop = new Tone.Part(function(time){
     players.get('snare').start(time,0.01);
@@ -58,7 +58,8 @@ var setBeat = function (beatObject) {
 	  return array.slice(0,i+1).join(" + ");
   })
   );
-  snareLoop.loopEnd = beatObject.snare.LoopEnd;
+  snareLoop.loopEnd = beatObject.PlayMeasures + "m+" + 
+                      beatObject.SilenceMeasures + "m";
   snareLoop.loop=true;
 
   hihatLoop = new Tone.Part(function(time){
@@ -67,7 +68,8 @@ var setBeat = function (beatObject) {
 	  return array.slice(0,i+1).join(" + ");
   })
   );
-  hihatLoop.loopEnd = beatObject.hihat.LoopEnd;
+  hihatLoop.loopEnd = beatObject.PlayMeasures + "m+" + 
+                      beatObject.SilenceMeasures + "m";
   hihatLoop.loop=true;
   hihatLoop.start(0);
   kickLoop.start(0);

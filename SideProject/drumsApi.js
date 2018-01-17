@@ -1,18 +1,50 @@
-var stopLoop = function(){
-Tone.Transport.stop();
-}
+var context = new AudioContext();
+var players;
 
-var setBeatTime = function (beatObject, snare, kick, hihat) {
-  snare.toMaster();
-  snare.retrigger = true;
-  kick.toMaster();
-  kick.retrigger = true;
-  hihat.toMaster();
-  hihat.retrigger = true;
-  hihat.volume.value=-8;
+var init = function(){
+    $.getJSON("./DrumBeats.json", function (json) { // remove outer Json loader
+    // Load samples
+    players = new Tone.Players(
+      {"kick":"./Samples/_Kick.wav",
+    "snare":"./Samples/_Snare.wav",
+    "hihat":"./Samples/_HH.wav",},
+    function(players)
+    {
+      players.get('snare').toMaster();
+      players.get('snare').retrigger = true;
+      players.get('kick').toMaster();
+      players.get('kick').retrigger = true;
+      players.get('hihat').toMaster();
+      players.get('hihat').retrigger = true;
+      players.get('hihat').volume.value=-8;
+      setTempo(120);
+      setBeat(json[0]); //remove
+    });
+    
+      $(document).ready(function () {
+        $('#stop').click(function () {
+          if (window.playing == true) {
+            window.playing = false;
+            stopLoop();
+          }
+        });
+      
+        $('#play').click(function () {
+          if (window.playing == false) {
+            window.playing = true;
+             startLoop();
+          }
+        });
+      });
+    });
 
+    window.playing = false;
+};
+
+var setBeat = function (beatObject) {
+  
   kickLoop = new Tone.Part(function(time){
-  	kick.start(time,0.001);
+  	players.get('kick').start(time,0.001);
   	},beatObject.kick.Pattern.map(function(e,i,array){
 	  return array.slice(0,i+1).join(" + ");
   }));
@@ -21,7 +53,7 @@ var setBeatTime = function (beatObject, snare, kick, hihat) {
    
 
   snareLoop = new Tone.Part(function(time){
-  snare.start(time,0.01);
+    players.get('snare').start(time,0.01);
   }, beatObject.snare.Pattern.map(function(e,i,array){
 	  return array.slice(0,i+1).join(" + ");
   })
@@ -30,7 +62,7 @@ var setBeatTime = function (beatObject, snare, kick, hihat) {
   snareLoop.loop=true;
 
   hihatLoop = new Tone.Part(function(time){
-  hihat.start(time,0.01); 
+    players.get('hihat').start(time,0.01); 
   }, beatObject.hihat.Pattern.map(function(e,i,array){
 	  return array.slice(0,i+1).join(" + ");
   })
@@ -42,44 +74,16 @@ var setBeatTime = function (beatObject, snare, kick, hihat) {
   snareLoop.start(0);
 }
 
-var setBeatTempo = function (tempo) {
+var setTempo = function (tempo) {
   Tone.Transport.bpm.value = tempo;
 }
 
-var context = new AudioContext();
+var stopLoop = function(){
+  Tone.Transport.stop();
+  }
 
-var setup = function (beats) {
-var players = new Tone.Players(
-  {"kick":"./Samples/_Kick.wav",
-"snare":"./Samples/_Snare.wav",
-"hihat":"./Samples/_HH.wav",},
-function(players)
-{
-  setBeatTempo(120);
-  setBeatTime(beats[1], players.get('snare'),players.get('kick'),
-   players.get('hihat'));
-});
-};
+var startLoop = function(){
+  Tone.Transport.start('+0.1');
+};  
 
-
-window.playing = false;
-
-$.getJSON("./DrumBeats.json", function (json) {
-  setup(json);
-
-  $(document).ready(function () {
-    $('#stop').click(function () {
-      if (window.playing == true) {
-        window.playing = false;
-        stopLoop();
-      }
-    });
-  
-    $('#play').click(function () {
-      if (window.playing == false) {
-        window.playing = true;
-     	  Tone.Transport.start('+0.1');
-      }
-    });
-  });
-});
+init();

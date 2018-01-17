@@ -19,7 +19,7 @@ var init = function () {
         players.get('hihat').retrigger = true;
         players.get('hihat').volume.value = -8;
         setTempo(120);
-        setBeat(json[2]); //remove
+        setBeat(json[1]); //remove
       });
 
     $(document).ready(function () {
@@ -99,5 +99,9 @@ var playMeasureNormalize = function (pattern, playMeasures) {
   }
   return completedArray;
 }
+
+var setSequence = function(){
+
+};
 
 init();

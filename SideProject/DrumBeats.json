@@ -1,8 +1,8 @@
 [
     {
         "name":"Beat1",
-        "PlayMeasures":"3",
-        "SilenceMeasures":"1",
+        "PlayMeasures":"2",
+        "SilenceMeasures":"3",
         "snare":{
 			"Pattern":["2n"]
 			

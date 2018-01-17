@@ -1,5 +1,3 @@
-
-
 var stopLoop = function(){
 Tone.Transport.stop();
 }
@@ -43,6 +41,7 @@ var setBeatTime = function (beatObject, snare, kick, hihat) {
   kickLoop.start(0);
   snareLoop.start(0);
 }
+
 var setBeatTempo = function (tempo) {
   Tone.Transport.bpm.value = tempo;
 }
@@ -57,9 +56,8 @@ var players = new Tone.Players(
 function(players)
 {
   setBeatTempo(120);
-  setBeatTime(beats[0], players.get('snare'),players.get('kick'),
+  setBeatTime(beats[1], players.get('snare'),players.get('kick'),
    players.get('hihat'));
-
 });
 };
 
@@ -70,7 +68,7 @@ $.getJSON("./DrumBeats.json", function (json) {
   setup(json);
 
   $(document).ready(function () {
-    $('#pause').click(function () {
+    $('#stop').click(function () {
       if (window.playing == true) {
         window.playing = false;
         stopLoop();

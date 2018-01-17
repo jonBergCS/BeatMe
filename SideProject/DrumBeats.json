@@ -2,22 +2,6 @@
     {
         "name":"Beat1",
         "snare":{
-			"Pattern":["0m","4n","4n","4n"],
-			"LoopEnd":"1m"
-		},
-        "kick": {
-            "Pattern":["0m","2n"],
-			"LoopEnd":"1m"
-        },
-        "hihat": {
-            "Pattern":["8n","8n","8n","8n",
-						"8n","8n","8n","8n"],
-			"LoopEnd":"1m"
-        }
-    },
-    {
-        "name":"Beat2",
-          "snare":{
 			"Pattern":["2n","2n"],
 			"LoopEnd":"1m"
 		},
@@ -26,7 +10,23 @@
 			"LoopEnd":"1m"
         },
         "hihat": {
-            "Pattern":["8n","8n","8n","8n",
+            "Pattern":["0m","8n","8n","8n",
+						"8n","8n","8n","8n"],
+			"LoopEnd":"1m"
+        }
+    },
+    {
+        "name":"Beat2",
+          "snare":{
+			"Pattern":["4n","8n+16n","8n+16n"],
+			"LoopEnd":"1m"
+		},
+        "kick": {
+            "Pattern":["0m","2n","4n+8n"],
+			"LoopEnd":"1m"
+        },
+        "hihat": {
+            "Pattern":["0m","8n","8n","8n",
 						"8n","8n","8n","8n"],
 			"LoopEnd":"1m"
         }
@@ -38,11 +38,12 @@
 			"LoopEnd":"1m"
 		},
         "kick": {
-            "Pattern":["0m","2n"],
+            "Pattern":["0m","8n+16n","8n+16n","8n+16n","8n+16n","8n+16n"],
 			"LoopEnd":"1m"
         },
         "hihat": {
-            "Pattern":["8n"],
+            "Pattern":["0m","8n","8n","8n",
+						"8n","8n","8n","8n"],
 			"LoopEnd":"1m"
         }
     }

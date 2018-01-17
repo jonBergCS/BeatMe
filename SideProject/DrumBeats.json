@@ -1,10 +1,10 @@
 [
     {
         "name":"Beat1",
-        "PlayMeasures":"1",
+        "PlayMeasures":"3",
         "SilenceMeasures":"1",
         "snare":{
-			"Pattern":["2n","2n"]
+			"Pattern":["2n"]
 			
 		},
         "kick": {
@@ -17,8 +17,8 @@
     },
     {
         "name":"Beat2",
-        "PlayMeasures":"1",
-        "SilenceMeasures":"1",
+        "PlayMeasures":"2",
+        "SilenceMeasures":"3",
           "snare":{
 			"Pattern":["4n","8n+16n","8n+16n"]
 		},
@@ -35,7 +35,7 @@
         "PlayMeasures":"1",
         "SilenceMeasures":"1",
           "snare":{
-			"Pattern":["2n","2n"]
+			"Pattern":["2n"]
 		},
         "kick": {
             "Pattern":["0m","8n+16n","8n+16n","8n+16n","8n+16n","8n+16n"]

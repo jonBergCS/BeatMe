@@ -37,11 +37,11 @@ class LandingPageView extends React.Component {
         </div>
         <div hidden={!this.state.hideJumbotron}>
           <div>
-            1. Choose a beat
+            <label className='beatme-label'>1. Choose a beat</label>
             <BeatsComponent {...this.props} />
           </div>
           <div>
-            2. Choose a tempo <br />
+            <label className='beatme-label'>2. Choose a tempo</label> <br />
             <NumericInput min={1} max={200} value={60} />
           </div>
         </div>

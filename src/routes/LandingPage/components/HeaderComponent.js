@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import '../styles/BeatMe.scss'
 
 class BeatsComponent extends Component {
-  render() {
+  render () {
     return (
       <div className='beatme-header'>
         BeatMe

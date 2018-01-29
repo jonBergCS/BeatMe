@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
 class BeatsComponent extends Component {
   render() {
@@ -23,4 +23,4 @@ BeatsComponent.propTypes = {
   beats: PropTypes.array
 }
 
-export default BeatsComponent;
+export default BeatsComponent

@@ -13,7 +13,7 @@ class BeatsComponent extends Component {
   }
 
   render () {
-    const { beats } = this.props
+    const { beats, playCurrentBeat } = this.props
     return (
       <div>
         <ul className='list-group'>
@@ -21,7 +21,7 @@ class BeatsComponent extends Component {
             <li className='list-group-item' key={index}>
               <div className='input-group-text'>
                 <input type='radio' />
-                <img src={PlayIcon} className='beats-play-icon' onClick={() => this.playBeat(beat)} />
+                <img src={PlayIcon} className='beats-play-icon' onClick={() => playCurrentBeat(beat)} />
               </div>
               {beat.name}
             </li>)}
@@ -32,7 +32,8 @@ class BeatsComponent extends Component {
 }
 
 BeatsComponent.propTypes = {
-  beats: PropTypes.array
+  beats: PropTypes.array,
+  playCurrentBeat: PropTypes.func.isRequired
 }
 
 export default BeatsComponent

@@ -1,6 +1,5 @@
 import React from 'react'
-import BeatsComponent from './BeatsComponent'
-import NumericInput from 'react-numeric-input'
+import BeatMeForm from './BeatMeForm'
 import '../styles/BeatMe.scss'
 
 class LandingPageView extends React.Component {
@@ -36,14 +35,7 @@ class LandingPageView extends React.Component {
           </p>
         </div>
         <div hidden={!this.state.hideJumbotron}>
-          <div>
-            <label className='beatme-label'>1. Choose your beat</label>
-            <BeatsComponent {...this.props} />
-          </div>
-          <div>
-            <label className='beatme-label'>2. Choose your tempo</label> <br />
-            <NumericInput min={1} max={200} value={60} />
-          </div>
+          <BeatMeForm {...this.props} />
         </div>
       </div>
     )

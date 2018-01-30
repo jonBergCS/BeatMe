@@ -1,8 +1,11 @@
 import { connect } from 'react-redux'
 import LandingPage from '../components/LandingPageView'
+import Beats from '../modules/DrumBeats.json'
+import * as BeatMeService from '../modules/BeatMeService'
 
 const mapStateToProps = (state) => ({
-  beats: [{ name: 'beat1' }, { name: 'beat2' }]
+  beats: Beats,
+  ...BeatMeService
 })
 
 export default connect(mapStateToProps)(LandingPage)

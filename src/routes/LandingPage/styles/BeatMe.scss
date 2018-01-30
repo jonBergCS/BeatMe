@@ -2,11 +2,12 @@
   width: 100vw;
   background-color: #1399d8;
   color: white;
-  padding: 15px;
-  position: absolute;
+  padding: 12px;
+  position: fixed;
   top: 0;
   left: 0;
   font-size: 24pt;
+  z-index: 10;
 }
 
 .beatme-jombotron {
@@ -30,4 +31,8 @@
 
 .react-numeric-input input {
   font-size: 18px !important;
+}
+
+.beatme-formsubmit-btn {
+  margin-top: 20px;
 }

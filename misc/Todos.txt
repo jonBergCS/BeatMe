@@ -1,0 +1,14 @@
+Bar:
+- Create screen ui
+
+Jon:
+- finding a way to time the samples.
+
+
+Events:
+- setCurrentGroove(grooveJson)
+- Play
+- Stop
+
+
+

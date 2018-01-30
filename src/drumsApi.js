@@ -140,5 +140,5 @@ function Kick(context) {
   });
   
   window.playing = false;
-  sampleLoader('samples/hihat.wav', context, setup);
+  sampleLoader('public/Samples/_HH.wav', context, setup);
   

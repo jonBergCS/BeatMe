@@ -5,7 +5,7 @@ class BeatsComponent extends Component {
   render () {
     return (
       <div className='beatme-header'>
-        BeatMe
+        ♫ BeatMe
       </div>
     )
   }

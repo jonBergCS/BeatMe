@@ -20,7 +20,7 @@ class LandingPageView extends React.Component {
     return (
       <div>
         <div hidden={this.state.hideJumbotron} className='jumbotron beatme-jombotron'>
-          <h1 className='display-4'>This is BeatMe</h1>
+          <h1 className='display-4'>This is ♫BeatMe</h1>
           <p className='lead'>
             This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
             featured content or information.
@@ -37,11 +37,11 @@ class LandingPageView extends React.Component {
         </div>
         <div hidden={!this.state.hideJumbotron}>
           <div>
-            <label className='beatme-label'>1. Choose a beat</label>
+            <label className='beatme-label'>1. Choose your beat</label>
             <BeatsComponent {...this.props} />
           </div>
           <div>
-            <label className='beatme-label'>2. Choose a tempo</label> <br />
+            <label className='beatme-label'>2. Choose your tempo</label> <br />
             <NumericInput min={1} max={200} value={60} />
           </div>
         </div>

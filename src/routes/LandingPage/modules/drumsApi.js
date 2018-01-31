@@ -115,12 +115,10 @@ export function setTempo (tempo) {
 
 export function stopLoop () {
   Tone.Transport.stop()
-  turnClickOff()
 }
 
 export function startLoop () {
   Tone.Transport.start('+0.1')
-  turnClickOn()
 }
 
 export function setInstVol (instrumentName, Volume) {

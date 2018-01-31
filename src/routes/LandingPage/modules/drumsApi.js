@@ -1,50 +1,63 @@
 import Tone from 'tone'
 
-var context = new AudioContext()
-var players
+var players,kickLoop,snareLoop,hihatLoop,clickOneLoop,clickBeatLoop
+
+// Pattern normalie based on how many playMeasures
+var playMeasureNormalize = function (pattern, playMeasures) {
+  var completedArray = []
+  for (let index = 0; index < playMeasures; index++) {
+    completedArray = completedArray.concat(Array.from(pattern).map(function (e, i, array) {
+      if (i === 0) { array[i] = index + 'm + ' + array[i] }
+      return array.slice(0, i + 1).join(' + ')
+    }))
+  }
+  return completedArray
+}
 
 var init = function () {
-  $.getJSON('./DrumBeats.json', function (json) { // remove outer Json loader
     // Load samples
-    players = new Tone.Players(
-      {
-        'kick': './Samples/_Kick.wav',
-        'snare': './Samples/_Snare.wav',
-        'hihat': './Samples/_HH.wav'
-      },
-      function (players) {
-        players.get('snare').toMaster()
-        players.get('snare').retrigger = true
-        players.get('kick').toMaster()
-        players.get('kick').retrigger = true
-        players.get('hihat').toMaster()
-        players.get('hihat').retrigger = true
-        players.get('hihat').volume.value = -8
-        setTempo(120)
-        setBeat(json[1]) // remove
-      })
+  players = new Tone.Players(
+    {
+      'kick': './Samples/_Kick.wav',
+      'snare': './Samples/_Snare.wav',
+      'hihat': './Samples/_HH.wav',
+      'clickone': './Samples/ClickOne.wav',
+      'clickbeat': './Samples/ClickBeat.wav'
+    },
+    function (players) {
+      players.get('snare').toMaster()
+      players.get('snare').retrigger = true
+      players.get('kick').toMaster()
+      players.get('kick').retrigger = true
+      players.get('hihat').toMaster()
+      players.get('hihat').retrigger = true
+      players.get('hihat').volume.value = -8
+      players.get('clickone').toMaster().retrigger = true
+      players.get('clickbeat').toMaster().retrigger = true
+      players.get('clickone').volume.value = -50
+      players.get('clickbeat').volume.value = -50
 
-    $(document).ready(function () {
-      $('#stop').click(function () {
-        if (window.playing == true) {
-          window.playing = false
-          stopLoop()
-        }
-      })
-
-      $('#play').click(function () {
-        if (window.playing == false) {
-          window.playing = true
-          startLoop()
-        }
-      })
+      setTempo(120)
     })
-  })
-
   window.playing = false
 }
 
-var setBeat = function (beatObject) {
+export function setBeat (beatObject) {
+  // Disposes Beat that have started
+if (kickLoop !=undefined)
+{
+  kickLoop.dispose()
+}
+if (snareLoop !=undefined)
+{
+  snareLoop.dispose()
+}
+if (hihatLoop !=undefined)
+{
+  hihatLoop.dispose()
+}
+  Tone.Transport.timeSignature = beatObject.timeSignature
+  
   kickLoop = new Tone.Part(function (time) {
     players.get('kick').start(time, 0.001)
   },
@@ -73,36 +86,56 @@ var setBeat = function (beatObject) {
   hihatLoop.loopEnd = beatObject.PlayMeasures + 'm+' +
     beatObject.SilenceMeasures + 'm'
   hihatLoop.loop = true
+
+  // creating the click
+  if (clickOneLoop != undefined) {
+    clickOneLoop.dispose()
+  }
+
+  if (clickBeatLoop != undefined) {
+    clickBeatLoop.dispose()
+  }
+
+  clickOneLoop = new Tone.Loop(function (time) {
+    players.get('clickone').start(time)
+  }, '1m').start(0)
+
+  clickBeatLoop = new Tone.Loop(function (time) {
+    players.get('clickbeat').start(time)
+  }, '8n').start(0)
+
   hihatLoop.start(0)
   kickLoop.start(0)
   snareLoop.start(0)
 }
 
-var setTempo = function (tempo) {
+export function setTempo (tempo) {
   Tone.Transport.bpm.value = tempo
 }
 
-var stopLoop = function () {
+export function stopLoop () {
   Tone.Transport.stop()
+  turnClickOff()
 }
 
-var startLoop = function () {
+export function startLoop () {
   Tone.Transport.start('+0.1')
+  turnClickOn()
 }
 
-var playMeasureNormalize = function (pattern, playMeasures) {
-  var completedArray = []
-  for (let index = 0; index < playMeasures; index++) {
-    completedArray = completedArray.concat(Array.from(pattern).map(function (e, i, array) {
-      if (i == 0) { array[i] = index + 'm + ' + array[i] }
-      return array.slice(0, i + 1).join(' + ')
-    }))
-  }
-  return completedArray
+export function setInstVol (instrumentName, Volume) {
+  players.get(instrumentName).volume.value = Volume
 }
 
-var setSequence = function () {
-
+export function turnClickOn () {
+  players.get('clickone').volume.value = 0
+  players.get('clickbeat').volume.value = 0
 }
 
+export function turnClickOff () {
+  players.get('clickone').volume.value = -50
+  players.get('clickbeat').volume.value = -50
+}
+
+// inits this Api
 init()

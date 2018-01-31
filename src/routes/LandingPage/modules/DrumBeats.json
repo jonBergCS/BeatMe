@@ -1,6 +1,7 @@
 [
     {
         "name":"Beat1",
+        "timeSignature":[4,4],
         "PlayMeasures":"2",
         "SilenceMeasures":"3",
         "snare":{
@@ -18,6 +19,7 @@
     {
         "name":"Beat2",
         "PlayMeasures":"2",
+        "timeSignature":[4,4],
         "SilenceMeasures":"3",
           "snare":{
 			"Pattern":["4n","8n+16n","8n+16n"]
@@ -33,6 +35,7 @@
     {
         "name":"Beat3",
         "PlayMeasures":"1",
+        "timeSignature":[4,4],
         "SilenceMeasures":"1",
           "snare":{
 			"Pattern":["2n"]
@@ -43,6 +46,38 @@
         "hihat": {
             "Pattern":["0m","8n","8n","8n",
 						"8n","8n","8n","8n"]
+        }
+    },
+    {
+        "name":"7/8 Beat",
+        "PlayMeasures":"1",
+        "timeSignature":[7,8],
+        "SilenceMeasures":"1",
+          "snare":{
+			"Pattern":["2n", "4n"]
+		},
+        "kick": {
+            "Pattern":["0m","4n"]
+        },
+        "hihat": {
+            "Pattern":["0m","8n","8n","8n",
+						"8n","8n","8n","8n"]
+        }
+    },
+    {
+        "name":"6/8 Beat",
+        "PlayMeasures":"1",
+        "timeSignature":[6,8],
+        "SilenceMeasures":"1",
+          "snare":{
+			"Pattern":["4n+8n"]
+		},
+        "kick": {
+            "Pattern":["0m","4n","4n+8n"]
+        },
+        "hihat": {
+            "Pattern":["0m","8n","8n","8n",
+						"8n","8n"]
         }
     }
 ]

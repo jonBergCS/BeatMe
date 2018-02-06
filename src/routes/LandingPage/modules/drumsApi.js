@@ -1,6 +1,6 @@
 import Tone from 'tone'
 
-var players,kickLoop,snareLoop,hihatLoop,clickOneLoop,clickBeatLoop
+var players, kickLoop, snareLoop, hihatLoop, clickOneLoop, clickBeatLoop
 
 // Pattern normalie based on how many playMeasures
 var playMeasureNormalize = function (pattern, playMeasures) {
@@ -15,7 +15,7 @@ var playMeasureNormalize = function (pattern, playMeasures) {
 }
 
 var init = function () {
-    // Load samples
+  // Load samples
   players = new Tone.Players(
     {
       'kick': './Samples/_Kick.wav',
@@ -42,22 +42,87 @@ var init = function () {
   window.playing = false
 }
 
-export function setBeat (beatObject) {
-  // Disposes Beat that have started
-if (kickLoop !=undefined)
-{
-  kickLoop.dispose()
+function unloadParts() {
+  Tone.Transport.stop();
+  Tone.Transport.cancel();
+  /*
+   // Disposes Beat that have started
+   if (kickLoop != undefined) {
+    kickLoop.dispose()
+  }
+  if (snareLoop != undefined) {
+    snareLoop.dispose()
+  }
+  if (hihatLoop != undefined) {
+    hihatLoop.dispose()
+  }
+  // creating the click
+  if (clickOneLoop != undefined) {
+    clickOneLoop.dispose()
+  }
+
+  if (clickBeatLoop != undefined) {
+    clickBeatLoop.dispose()
+  }
+*/
 }
-if (snareLoop !=undefined)
-{
-  snareLoop.dispose()
-}
-if (hihatLoop !=undefined)
-{
-  hihatLoop.dispose()
-}
+
+export function setLesson(difficultyObject, beatObject) {
+  // Disposes the Parts
+  unloadParts()
   Tone.Transport.timeSignature = beatObject.timeSignature
-  
+  setTempo(difficultyObject.BPM);
+  var startingPosition = "0m";
+
+  for (let i = 0; i < difficultyObject.Levels.length; i++) {
+
+    let currlvl = difficultyObject.Levels[i]
+
+    kickLoop = new Tone.Part(function (time) {
+      players.get('kick').start(time, 0.001)
+    },
+      playMeasureNormalize(beatObject.kick.Pattern, currlvl.PlayMeasures)
+    )
+    kickLoop.loopEnd =  currlvl.PlayMeasures + 'm+' +
+      currlvl.SilenceMeasures + 'm'
+    kickLoop.loop = currlvl.Repeats 
+
+    kickLoop.start(startingPosition)
+
+
+    snareLoop = new Tone.Part(function (time) {
+      players.get('snare').start(time, 0.01)
+    },
+
+      playMeasureNormalize(beatObject.snare.Pattern, currlvl.PlayMeasures)
+    )
+    snareLoop.loopEnd =   currlvl.PlayMeasures + 'm+' +
+      currlvl.SilenceMeasures + 'm'
+    snareLoop.loop = currlvl.Repeats 
+    snareLoop.start(startingPosition)
+
+    hihatLoop = new Tone.Part(function (time) {
+      players.get('hihat').start(time, 0.01)
+    },
+
+      playMeasureNormalize(beatObject.hihat.Pattern, currlvl.PlayMeasures)
+    )
+    hihatLoop.loopEnd =  currlvl.PlayMeasures + 'm+' +
+      currlvl.SilenceMeasures + 'm'
+    hihatLoop.loop = currlvl.Repeats 
+    hihatLoop.start(startingPosition)
+
+
+    startingPosition += ' + ' + Tone.TimeBase(kickLoop.loopEnd).mult(currlvl.Repeats)
+  }
+}
+
+export function setBeat (beatObject) {
+  // Disposes the Parts
+  unloadParts()
+
+  Tone.Transport.timeSignature = beatObject.timeSignature
+
   kickLoop = new Tone.Part(function (time) {
     players.get('kick').start(time, 0.001)
   },
@@ -87,15 +152,6 @@ if (hihatLoop !=undefined)
     beatObject.SilenceMeasures + 'm'
   hihatLoop.loop = true
 
-  // creating the click
-  if (clickOneLoop != undefined) {
-    clickOneLoop.dispose()
-  }
-
-  if (clickBeatLoop != undefined) {
-    clickBeatLoop.dispose()
-  }
-
   clickOneLoop = new Tone.Loop(function (time) {
     players.get('clickone').start(time)
   }, '1m').start(0)
@@ -109,28 +165,28 @@ if (hihatLoop !=undefined)
   snareLoop.start(0)
 }
 
-export function setTempo (tempo) {
+export function setTempo(tempo) {
   Tone.Transport.bpm.value = tempo
 }
 
-export function stopLoop () {
+export function stopLoop() {
   Tone.Transport.stop()
 }
 
-export function startLoop () {
+export function startLoop() {
   Tone.Transport.start('+0.1')
 }
 
-export function setInstVol (instrumentName, Volume) {
+export function setInstVol(instrumentName, Volume) {
   players.get(instrumentName).volume.value = Volume
 }
 
-export function turnClickOn () {
+export function turnClickOn() {
   players.get('clickone').volume.value = 0
   players.get('clickbeat').volume.value = 0
 }
 
-export function turnClickOff () {
+export function turnClickOff() {
   players.get('clickone').volume.value = -50
   players.get('clickbeat').volume.value = -50
 }

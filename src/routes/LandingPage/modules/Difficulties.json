@@ -1,0 +1,53 @@
+{
+    "Easy": {
+        "BPM": 120,
+        "Levels": [
+            {
+                "PlayMeasures": "3",
+                "SilenceMeasures": "1",
+                "Repeats": 2
+            },
+            {
+                "PlayMeasures": "2",
+                "SilenceMeasures": "2",
+                "Repeats": 2
+            },
+            {
+                "PlayMeasures": "1",
+                "SilenceMeasures": "3",
+                "Repeats": 2
+            }
+        ]
+    },
+    "Medium": {
+        "BPM": 100,
+        "Levels": [
+            {
+                "PlayMeasures": "2",
+                "SilenceMeasures": "2",
+                "Repeats": 4
+            },
+            {
+                "PlayMeasures": "1",
+                "SilenceMeasures": "3",
+                "Repeats": 2
+            }
+        ]
+    },
+    "Hard": {
+        "BPM": 140,
+        "Levels": [
+            {
+                "PlayMeasures": "1",
+                "SilenceMeasures": "1",
+                "Repeats": 2
+            },
+            {
+                "PlayMeasures": "2",
+                "SilenceMeasures": "3",
+                "Repeats": 2
+            }
+        ]
+    }
+    
+}

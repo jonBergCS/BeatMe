@@ -1,12 +1,16 @@
 import { connect } from 'react-redux'
 import LandingPage from '../components/LandingPageView'
 import Beats from '../modules/DrumBeats.json'
-import _ from 'lodash'
-import * as BeatMeService from '../modules/BeatMeService'
+
+import { playBeat, playCurrentBeat, stopPlaying, playBeatSubmit, setInstVolume } from '../modules/BeatMeService'
 
 const mapStateToProps = (state) => ({
   beats: Beats,
-  ...BeatMeService
+  playBeat,
+  playCurrentBeat,
+  stopPlaying,
+  playBeatSubmit,
+  setInstVolume
 })
 
 export default connect(mapStateToProps)(LandingPage)

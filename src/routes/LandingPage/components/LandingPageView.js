@@ -29,7 +29,7 @@ class LandingPageView extends React.Component {
           </p>
           <hr className='my-4' />
           <p className='lead beatme-jombotron-button'>
-            <a className='btn btn-primary btn-lg' onClick={this.onJumbotronClick} href='#' role='button'>
+            <a className='btn btn-info btn-lg' onClick={this.onJumbotronClick} href='#' role='button'>
               Got it, let's go!
             </a>
           </p>

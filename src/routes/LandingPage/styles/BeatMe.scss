@@ -29,10 +29,58 @@
   cursor: pointer;
 }
 
+.beat-name-span {
+  font-weight: 600;
+}
+
 .react-numeric-input input {
   font-size: 18px !important;
 }
 
 .beatme-formsubmit-btn {
   margin-top: 20px;
+}
+
+.beatme-volume-slider {
+  height: 10vw;
+}
+
+.beatme-volume-container {
+  height: 15vw;
+  margin: 0 25px;
+}
+
+form input {
+  border-radius: 4px;
+  border-style: groove;
+  padding: 3px;
+}
+
+.beatme-middle-section {
+  margin: 40px 0;
+}
+
+.beatme-attribute-row {
+  margin-bottom: 2.5vh;
+}
+
+.beatme-volume-control-container {
+  padding: 0 30px;
+  border-radius: 20px;
+  background: whitesmoke;
+  color: darkslategray;
+}
+
+.beatme-volume-slider div {
+  margin: 0 auto;
+}
+
+.beatme-buttons-row {
+  width: 20vw;
+  margin: 0 auto 40px;
+}
+
+.beatme-formsubmit-btn {
+  width: 8vw;
+  cursor: pointer;
 }

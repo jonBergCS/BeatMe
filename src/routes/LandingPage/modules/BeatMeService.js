@@ -25,6 +25,9 @@ export const setInstVolume = (inst, vol) => {
 }
 
 export const playBeatSubmit = (values, dispatch, getState) => {
+  // Stops the current running loop
+  DrumsApi.stopLoop()
+
   let newBeat = {}
   // getState.beats.map((beat, index) => {
   //   if (beat.name === values.radio) {
@@ -45,8 +48,17 @@ export const playBeatSubmit = (values, dispatch, getState) => {
 }
 
 export const playBeat = (beat, tempo) => {
+
+	  // Stops the current running loop
+  DrumsApi.stopLoop()
   DrumsApi.setBeat(beat)
   DrumsApi.setTempo(tempo)
   DrumsApi.startLoop()
 }
 
+export const MetronomeOn = () => {
+DrumsApi.turnClickOn();
+}
+export const MetronomeOff = () => {
+DrumsApi.turnClickOff();
+}

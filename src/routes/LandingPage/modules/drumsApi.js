@@ -34,8 +34,8 @@ var init = function () {
       players.get('hihat').volume.value = -8
       players.get('clickone').toMaster().retrigger = true
       players.get('clickbeat').toMaster().retrigger = true
-      players.get('clickone').volume.value = -50
-      players.get('clickbeat').volume.value = -50
+      players.get('clickone').volume.value = -70
+      players.get('clickbeat').volume.value = -70
 
       setTempo(120)
     })
@@ -45,26 +45,26 @@ var init = function () {
 function unloadParts() {
   Tone.Transport.stop();
   Tone.Transport.cancel();
-  /*
+  
    // Disposes Beat that have started
-   if (kickLoop != undefined) {
+   if (kickLoop != undefined){// && (kickLoop._state != null || kickLoop._state != undefined)) {
     kickLoop.dispose()
   }
-  if (snareLoop != undefined) {
+if (snareLoop != undefined){//} && (snareLoop._state != null || snareLoop._state != undefined)) {
     snareLoop.dispose()
   }
-  if (hihatLoop != undefined) {
+  if (hihatLoop != undefined){//} && (hihatLoop._state != null || hihatLoop._state != undefined)) {
     hihatLoop.dispose()
   }
   // creating the click
-  if (clickOneLoop != undefined) {
+  if (clickOneLoop != undefined ){//&& (clickOneLoop._state != null || clickOneLoop._state != undefined)) {
     clickOneLoop.dispose()
   }
 
-  if (clickBeatLoop != undefined) {
+  if (clickBeatLoop != undefined){//} && (clickBeatLoop._state != null || clickBeatLoop._state != undefined)) {
     clickBeatLoop.dispose()
   }
-*/
+
 }
 
 export function setLesson(difficultyObject, beatObject) {
@@ -187,8 +187,8 @@ export function turnClickOn() {
 }
 
 export function turnClickOff() {
-  players.get('clickone').volume.value = -50
-  players.get('clickbeat').volume.value = -50
+  players.get('clickone').volume.value = -70
+  players.get('clickbeat').volume.value = -70
 }
 
 // inits this Api

@@ -50,3 +50,10 @@ export const playBeat = (beat, tempo) => {
   DrumsApi.startLoop()
 }
 
+export const toggleClick = (on) => {
+  if (on) {
+    DrumsApi.turnClickOn()
+  } else {
+    DrumsApi.turnClickOff()
+  }
+}

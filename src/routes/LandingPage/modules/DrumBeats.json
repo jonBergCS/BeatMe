@@ -1,6 +1,6 @@
 [
     {
-        "name":"Beat1",
+        "name":"Standart 4/4",
         "timeSignature":[4,4],
         "PlayMeasures":"2",
         "SilenceMeasures":"3",
@@ -16,8 +16,24 @@
 						"8n","8n","8n","8n"]
         }
     },
+	{
+        "name":"Metal",
+        "PlayMeasures":"2",
+        "timeSignature":[4,4],
+        "SilenceMeasures":"3",
+          "snare":{
+			"Pattern":["0m","2n"]
+		},
+        "kick": {
+            "Pattern":["0m","16n","16n","16n","16n"]
+        },
+        "hihat": {
+            "Pattern":["0m","8n","8n","8n",
+						"8n","8n","8n","8n"]
+        }
+    },
     {
-        "name":"Beat2",
+        "name":"Oriental",
         "PlayMeasures":"2",
         "timeSignature":[4,4],
         "SilenceMeasures":"3",
@@ -33,7 +49,7 @@
         }
     },
     {
-        "name":"Beat3",
+        "name":"Djent",
         "PlayMeasures":"1",
         "timeSignature":[4,4],
         "SilenceMeasures":"1",
